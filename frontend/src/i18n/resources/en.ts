@@ -1,0 +1,211 @@
+const en = {
+  app: {
+    title: 'Calendar Booking',
+    subtitle: 'Booking Service',
+  },
+  nav: {
+    bookNow: 'Book now',
+    adminCabinet: 'Admin area',
+    adminOverview: 'Overview',
+    adminOwner: 'Profile',
+    adminEventTypes: 'Event types',
+    adminBookings: 'Bookings',
+  },
+  common: {
+    requestFailed: 'Request failed',
+    emptyState: 'Nothing here yet',
+    noDataYet: 'No data yet.',
+    noRecordsFound: 'No records found.',
+    unknown: 'Unknown',
+    back: 'Back',
+    loading: 'Loading...',
+    dash: '-',
+    today: 'Today',
+    tomorrow: 'Tomorrow',
+    unexpectedApiError: 'Unexpected API error',
+  },
+  admin: {
+    shell: {
+      groups: {
+        overview: 'Overview',
+        management: 'Management',
+      },
+      profile: {
+        name: 'Calendar Owner',
+        role: 'Admin',
+      },
+    },
+    cabinet: {
+      heading: 'Overview',
+      description: 'View quick stats and access your profile, event types, and bookings.',
+      open: 'Open',
+      chart: {
+        title: 'Occupied slots by day',
+        description: 'Upcoming bookings for next week.',
+        caption: '{{count}} event types currently active.',
+      },
+      stats: {
+        total: '{{count}} total',
+        eventTypes: {
+          title: 'Event Types',
+          subtitle: 'Available for public booking',
+          description: 'Total event types available in the system',
+        },
+        bookings: {
+          title: 'Upcoming Bookings',
+          subtitle: 'Across all event types',
+          description: 'Total reservations in the system',
+        },
+      },
+      owner: {
+        title: 'Profile',
+        description: 'Contacts and account details for the calendar owner.',
+      },
+      eventTypes: {
+        title: 'Event types',
+        description: 'Create and manage meeting types with duration and description.',
+      },
+      bookings: {
+        title: 'Bookings',
+        description: 'Track upcoming reservations across all event types.',
+      },
+    },
+    owner: {
+      heading: 'Profile',
+      description: 'Review account details for the booking owner.',
+      ownerId: 'Owner ID: {{id}}',
+      email: 'Email: {{email}}',
+      labels: {
+        id: 'ID',
+        email: 'Email',
+      },
+    },
+    bookings: {
+      heading: 'Upcoming bookings',
+      description: 'Monitor upcoming reservations across all active event types.',
+      empty: 'No upcoming bookings.',
+      columns: {
+        guest: 'Guest',
+        email: 'Email',
+        starts: 'Start time',
+        ends: 'End time',
+        eventType: 'Event type',
+      },
+    },
+    eventTypes: {
+      heading: 'Create event type',
+      description: 'Manage existing event types and create new ones.',
+      createDescription: 'Set up a new event type with duration and guest-facing description.',
+      cardTitle: 'New event type',
+      cardDescription: '',
+      columns: {
+        name: 'Name',
+        duration: 'Duration',
+        bookings: 'Bookings',
+        description: 'Description',
+      },
+      labels: {
+        name: 'Name',
+        description: 'Description',
+        durationMinutes: 'Duration (minutes)',
+      },
+      values: {
+        durationMinutes: '{{minutes}} min',
+      },
+      actions: {
+        create: 'Create event type',
+        createShort: 'Create',
+        creating: 'Creating...',
+        hideCreate: 'Hide form',
+      },
+      toasts: {
+        created: 'Event type created',
+        createFailed: 'Failed to create event type',
+      },
+      validation: {
+        nameRequired: 'Name is required.',
+        nameMax: 'Name must be at most {{max}} characters.',
+        descriptionMax: 'Description must be at most {{max}} characters.',
+        durationMin: 'Duration must be at least {{min}} minutes.',
+        durationMax: 'Duration must be at most {{max}} minutes.',
+      },
+    },
+  },
+  public: {
+    home: {
+      heading: 'Book now',
+      description: 'Click a card to open the calendar and pick an available slot.',
+      empty: 'No event types are available right now. Please check back later.',
+      openSlots: 'Open calendar',
+      minutesUnit: 'min',
+      durationBadge: '{{minutes}} min',
+      bookingsCountBadge: '{{count}} bookings',
+      available: 'Available',
+      fullyBooked: 'Fully booked',
+    },
+    eventType: {
+      fallbackName: 'Meeting',
+      fallbackDescription: 'Pick a slot and enter your contact details.',
+      duration: 'Duration: {{minutes}} minutes',
+      noDuration: 'Duration: - minutes',
+      bookingVia: 'Booking is submitted via',
+      emptySlots: 'No free slots in the 14-day window.',
+      guestDetails: 'Guest details',
+      guestDetailsDescription: 'Enter your contact details to confirm the booking.',
+      calendarTitle: 'Calendar',
+      calendarDescription: 'Choose a date to see available times',
+      slotStatus: 'Available slots',
+      noDaySelected: 'No date selected',
+      utc: 'UTC',
+      daySlots: '{{count}} slots',
+      labels: {
+        guestName: 'Your name',
+        guestEmail: 'Email',
+        startTime: 'Available slot',
+      },
+      placeholders: {
+        selectSlot: 'Select slot',
+        guestName: 'For example, Anna',
+        guestEmail: 'guest@example.com',
+      },
+      status: {
+        free: 'Free',
+        busy: 'Busy',
+      },
+      actions: {
+        confirmBooking: 'Confirm booking',
+        booking: 'Booking...',
+        continue: 'Continue',
+        back: 'Back',
+      },
+      toasts: {
+        created: 'Booking created',
+        createFailed: 'Failed to create booking',
+      },
+      validation: {
+        guestNameRequired: 'Guest name is required.',
+        guestNameMax: 'Guest name must be at most {{max}} characters.',
+        guestEmailInvalid: 'Enter a valid email address.',
+        startTimeRequired: 'Select a time slot',
+      },
+    },
+    bookingConfirmation: {
+      title: 'Booking confirmed',
+      bookingIdLabel: 'Booking ID:',
+      guestLabel: 'Guest:',
+      emailLabel: 'Email:',
+      startTimeLabel: 'Start time:',
+      bookingId: 'Booking ID: {{bookingId}}',
+      guest: 'Guest: {{value}}',
+      email: 'Email: {{value}}',
+      startTime: 'Start time: {{value}}',
+    },
+  },
+  notFound: {
+    title: 'Page not found',
+    description: 'Route is not configured in this frontend app.',
+    goHome: 'Go to home',
+  },
+}
+
+export default en
