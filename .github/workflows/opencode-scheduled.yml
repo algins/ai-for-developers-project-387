@@ -51,7 +51,6 @@ jobs:
           retention-days: 14
 
       - name: Run OpenCode follow-up
-        if: always() && secrets.OPENCODE_API_KEY != ''
         uses: anomalyco/opencode/github@latest
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
