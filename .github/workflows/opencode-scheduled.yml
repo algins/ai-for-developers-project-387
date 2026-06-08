@@ -1,29 +1,33 @@
-name: Scheduled Lighthouse Audit
+name: opencode-scheduled
 
 on:
   schedule:
     - cron: "0 2 * * *" # Nightly run at 02:00 UTC
-  workflow_dispatch:
-    inputs:
-      target_url:
-        description: "Public URL to audit (optional). If empty, uses LIGHTHOUSE_TARGET_URL secret."
-        required: false
-        type: string
+  workflow_dispatch: {}
 
 jobs:
   lighthouse-audit:
     runs-on: ubuntu-latest
+
     permissions:
-      id-token: write
       contents: read
       issues: write
+
     env:
-      TARGET_URL: ${{ github.event.inputs.target_url || secrets.LIGHTHOUSE_TARGET_URL }}
+      TARGET_URL: ${{ secrets.LIGHTHOUSE_TARGET_URL }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
           persist-credentials: false
+
+      - name: Validate TARGET_URL
+        run: |
+          if [ -z "$TARGET_URL" ]; then
+            echo "ERROR: LIGHTHOUSE_TARGET_URL secret is not set"
+            exit 1
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -49,16 +53,3 @@ jobs:
             .lighthouseci/**
           if-no-files-found: warn
           retention-days: 14
-
-      - name: Run OpenCode follow-up
-        uses: anomalyco/opencode/github@latest
-        env:
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-        with:
-          model: opencode/kimi-k2.6
-          prompt: |
-            Run a performance audit for the main pages of the application.
-            Compare key metrics (LCP, FID, CLS) with previous results
-            stored in docs/performance-baseline.md.
-            If any metric degraded by more than 10%, create an issue
-            with specific recommendations for improvement.
