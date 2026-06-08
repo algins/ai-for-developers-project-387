@@ -1,0 +1,29 @@
+name: opencode-review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  review:
+    if: ${{ !endsWith(github.event.pull_request.user.login, '[bot]') }}
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: anomalyco/opencode/github@latest
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        with:
+          model: opencode/kimi-k2.6
+          prompt: |
+            Review this pull request:
+            - Find bugs and risky changes
+            - Check readability and maintainability
+            - Leave actionable review comments
