@@ -212,4 +212,4 @@ When the container starts:
 
 ## Deployment
 
-This is a demo application and does not have a permanent deployed URL.
+This is a demo application deployed at: `https://ai-for-developers-project-387-eegc.onrender.com`
